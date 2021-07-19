@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no">
+    <title>card</title>
+    <script type="text/javascript" src="js/requestAnimationFrame.js"></script>
+    <script type="text/javascript" src="js/tween.js"></script>
+    <script type="text/javascript" id="myAni" src="js/myJs.js"></script>
+    <!--<link type="text/css" rel="stylesheet" href="css/style.css" />-->
+    <style>
+        *{
+            margin: 0; padding: 0
+        }
+
+        body{
+            background: #282828;
+            text-align: center;
+        }
+
+        canvas{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            box-shadow: 2px 4px 10px rgba(0,0,0,.5);
+            /*background: #fff;*/
+        }
+
+        #m_btn, #m_r{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 100;
+            margin: -238px 0 0 -450px;
+            cursor: pointer;
+        }
+
+        #m_r{
+            margin: -238px 0 0 -385px;
+
+        }
+
+        #login{
+            width: 940px;
+            height: 500px;
+            background: #fff;
+            color: #5ba8cc;
+            font-size: 50px;
+            font-family: "Microsoft YaHei", "SimHei";
+            font-weight: 600;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 101;
+            letter-spacing: 20px;
+            text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        #login > div{
+            line-height: 500px;
+        }
+
+        #login > div span{
+            position: relative;
+            left: -40px;
+            /*-moz-animation: myani 1.5s ease-out 0.5 infinite alternate;*/
+            /*-webkit-animation: myani 1.5s ease-out 0.5 infinite alternate;*/
+            /*-o-animation: myani 1.5s ease-out 0.5 infinite alternate;*/
+            /*animation: myani 1.5s linear 2s infinite alternate;*/
+        }
+
+        #login > div span.d1{
+            animation: myani 0.7s ease-out 0.5s infinite alternate;
+        }
+
+        #login > div span.d2{
+            animation: myani 0.7s ease-out 0.9s infinite alternate;
+        }
+
+        #login > div span.d3{
+            animation: myani 0.7s ease-out 1.3s infinite alternate;
+        }
+
+        @keyframes myani
+        {
+            0%   {top: 0;}
+            100% {top: -15px;}
+        }
+
+        @-moz-keyframes myani /* Firefox */
+        {
+            0%   {top: 0;}
+            100% {top: -15px;}
+        }
+
+        @-webkit-keyframes myani /* Safari 和 Chrome */
+        {
+            0%   {top: 0;}
+            100% {top: -15px;}
+        }
+
+        @-o-keyframes myani /* Opera */
+        {
+            0%   {top: 0;}
+            100% {top: -15px;}
+        }
+
+
+        /*#t{*/
+            /*width: 30%;*/
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*top: 0;*/
+            /*background: linear-gradient(to bottom, #ffffff 0%,#7db9e8 100%);*/
+        /*}*/
+    </style>
+</head>
+
+
+<body>
+<div id="login">
+    <div>LOGIN <span class="d1">.</span><span class="d2">.</span><span class="d3">.</span>
+    </div>
+</div>
+
+<canvas id="canvas" width="940" height="500">
+    您的浏览器不支持canvas，建议使用最新版的Chrome
+</canvas>
+<img src="images/m_close.png" id="m_btn" onclick="musicOpen(_music,this)" />
+<img src="images/m_replay.png" id="m_r" />
+<audio src="music.mp3" id="music" loop="loop" preload="auto" >
+
+</audio>
+<!--<div id="t"></div>-->
+<script>
+    var btn = new Image();
+    btn.src = "images/m_open.png";
+    var _music = document.getElementById("music");
+    function musicOpen(obj,t){
+
+//        var isShow = obj.paused;
+        var isOpen = obj.paused;
+
+        if(isOpen){
+            obj.play();
+            t.src = "images/m_open.png";
+        } else{
+            obj.pause();
+            t.src = "images/m_close.png";
+        }
+
+        //        obj.defaultMuted = true;
+//        obj.muted = !fla;
+//        obj.paused = true;
+    }
+
+
+</script>
+</body>
+</html>
